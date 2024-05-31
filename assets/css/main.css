@@ -2758,6 +2758,7 @@ input, select, textarea {
 
 			.tiles article .image {
 				display: flex;
+				position: relative;
 			}
 
 			.tiles article header {
