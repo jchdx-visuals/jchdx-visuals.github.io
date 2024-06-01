@@ -1,9 +1,3 @@
-/*
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 (function($) {
 
 	var	$window = $(window),
@@ -330,6 +324,46 @@
 					if (event.keyCode == 27)
 						$menu._hide();
 
+			});
+
+			$(document).ready(function() {
+				let modal = document.getElementById('imageModal');
+				let modalImage = document.getElementById('modalImage');
+				let currentImageIndex = 0;
+				let images = document.querySelectorAll('.image.fit img');
+			
+				images.forEach((img, index) => {
+					img.onclick = function() {
+						currentImageIndex = index;
+						modal.style.display = "flex";  // Use flex to show the modal and center it
+						modalImage.src = this.src;
+					}
+				});
+			
+				let closeBtn = document.getElementsByClassName("close")[0];
+			
+				closeBtn.onclick = function() {
+					modal.style.display = "none";
+				}
+			
+				function changeImage(n) {
+					currentImageIndex += n;
+					if (currentImageIndex >= images.length) {
+						currentImageIndex = 0;
+					} else if (currentImageIndex < 0) {
+						currentImageIndex = images.length - 1;
+					}
+					modalImage.src = images[currentImageIndex].src;
+				}
+			
+				window.changeImage = changeImage;
+			
+				// Close the modal when clicking outside of the image
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
 			});
 
 })(jQuery);
