@@ -178,6 +178,8 @@
 
 		});
 
+		
+
 	// Header.
 		if ($banner.length > 0
 		&&	$header.hasClass('alt')) {
